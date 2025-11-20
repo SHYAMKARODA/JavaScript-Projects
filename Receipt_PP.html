@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="C:\Users\Hps\OneDrive\Desktop\JavaScript\JQuery\Receipt_PP.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function()
+		{
+			$(".name_box").keyup(function()
+			{
+				var SN = $(".name_box").val();
+				if (/\d/.test(SN)) 
+				{
+                    $(".name_box").val("");              // Clear the field if it contains numbers
+                }
+			});
+			$("#pay_fees").keyup(function()
+			{
+				var PF = $("#pay_fees").val();
+				if(PF=="")
+				{
+					$("#gst_include").val("");
+					$("#cgst_include").val("");
+				    $("#sgst_include").val("");
+					$("#total_fees").val("");
+					$("#gst").val("");
+				}
+			});
+			$("#pay_fees").on('input', function()
+        	{
+        		this.value = this.value.replace(/[^0-9]/,'');    //Pay_fees input will only take number as input
+        	});
+			$("#gst").click(function()
+			{
+				var PF = $("#pay_fees").val();
+				var GST = $("#gst").val();
+				if(GST=="0")
+				{
+					var GSTI = 0;
+					var TF = parseInt(PF) + parseInt(GSTI);
+					$("#gst_include").val(GSTI);
+					$("#cgst_include").val(GSTI/2);
+				    $("#sgst_include").val(GSTI/2);
+					$("#total_fees").val(TF);
+				}
+				else if(GST=="5")
+				{
+					var GSTI = (PF*5)/100;
+					var TF = parseInt(PF) + parseInt(GSTI);
+					$("#gst_include").val(GSTI);
+					$("#cgst_include").val(GSTI/2);
+					$("#sgst_include").val(GSTI/2);
+					$("#total_fees").val(TF);
+				}
+				else if(GST=="12")
+				{
+					var GSTI = (PF*12)/100;
+					var TF = parseInt(PF) + parseInt(GSTI);
+					$("#gst_include").val(GSTI);
+					$("#cgst_include").val(GSTI/2);
+					$("#sgst_include").val(GSTI/2);
+					$("#total_fees").val(TF);
+				}
+				else if(GST=="18")
+				{
+					var GSTI = (PF*18)/100;
+					var TF = parseInt(PF) + parseInt(GSTI);
+					$("#gst_include").val(GSTI);
+					$("#cgst_include").val(GSTI/2);
+					$("#sgst_include").val(GSTI/2);
+					$("#total_fees").val(TF);
+				}
+				else if(GST=="28")
+				{
+					var GSTI = (PF*28)/100;
+					var TF = parseInt(PF) + parseInt(GSTI);
+					$("#gst_include").val(GSTI);
+					$("#cgst_include").val(GSTI/2);
+					$("#sgst_include").val(GSTI/2);
+					$("#total_fees").val(TF);
+				}
+				else
+				{
+					$("#gst_include").val("");
+					$("#cgst_include").val("");
+					$("#sgst_include").val("");
+					$("#total_fees").val("");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="receipt">
+		<center><h1>Programmers Point</h1><br><br>
+		<h3>Bhanwarkuan, Indore (M.P.)</h3></center><br><br><br>
+		<div id="heading">
+			<center><h3>Receipt</h3></center>
+		</div>
+		<input type="date" id="cal">
+		<hr id="hr">
+		<div id="name">
+			Name of student : <input type="text" class="name_box">
+		</div>
+		<table id="pay_info" cellspacing="0">
+			<th>COURSES OFFERED BY INSTITUTE</th>
+			<th>COURSE FEE</th>
+
+			<tr>
+				<td><b>Course</b></td>
+				<td>
+					<select class="info">
+						<option>Select course</option>
+						<option>C/C++</option>
+						<option>Python</option>
+						<option>Java</option>
+						<option>Front end</option>
+						<option>Back end</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Pay Fees</b></td>
+				<td><input type="text" class="info" id="pay_fees"></td>
+			</tr>
+			<tr>
+				<td><b>GST Include</b>
+					<select id="gst">
+						<option value="">GST Slab</option>
+						<option value="0">0%</option>
+						<option value="5">5%</option>
+						<option value="12">12%</option>
+						<option value="18">18%</option>
+						<option value="28">28%</option>
+					</select>
+				</td>
+				<td><input type="text" class="info" id="gst_include" readonly></td>
+			</tr>
+			<tr>
+				<td><b>CGST(%)</b></td>
+				<td><input type="text" class="info" id="cgst_include" readonly></td>
+			</tr>
+			<tr>
+				<td><b>SGST(%)</b></td>
+				<td><input type="text" class="info" id="sgst_include" readonly></td>
+			</tr>
+			<tr>
+				<td><b>Total Fee Including tax</b></td>
+				<td><input type="text" class="info" id="total_fees" readonly></td>
+			</tr>
+		</table>
+		<button onclick="window.print()" id="print">Print Receipt</button>
+		<h3 id="sign">Signature</h3>
+	</div>
+</body>
+</html>

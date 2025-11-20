@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		var start=0;
+		var last=1;
+		document.write(start,"<br>");
+		document.write(last,"<br>");
+		for(i=2;i<10;i++)
+		{
+			var sum = start + last;
+			document.write(sum,"<br>");
+			start = last;
+			last = sum;
+		}
+	</script>
+</body>
+</html> 

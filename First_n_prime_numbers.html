@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>First n Prime numbers</title>
+</head>
+<body>
+	<script>
+		var count = 0;
+		var n = 10;
+		var num = 2;
+
+		document.write(`<b>First ${n} prime numbers</b>`,"<br>","<br>")
+
+		while(count<n)
+		{
+			var prime = true;
+			for(var i=2;i<=(num/2);i++)
+			{
+				if(num%i==0)
+				{
+					prime = false;
+					break;
+				}
+			}
+			if(prime)
+			{
+				document.write(num,"<br>");
+				count++;
+			}
+			num++;
+		}
+	</script>
+</body>
+</html>

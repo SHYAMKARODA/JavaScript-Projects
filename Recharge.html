@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		#msg
+		{
+			color: red;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function()
+		{
+			function update()
+			{
+				var currentDate = $("#da").val();
+			    var DAYSS = $("#days").val();
+
+			    if(currentDate && DAYSS) 
+			    {
+				    if(DAYSS == "14")
+				    {
+				    	$("#msg").text("Recharge will expire in 14 days on " + expire(currentDate, 14));
+				    } 
+				    else if(DAYSS == "22") 
+				    {
+				    	$("#msg").text("Recharge will expire in 22 days on " + expire(currentDate, 22));
+				    } 
+				    else if(DAYSS == "28") 
+				    {
+				    	$("#msg").text("Recharge will expire in 28 days on " + expire(currentDate, 28));
+				    } 
+				    else if(DAYSS == "56") 
+				    {
+				    	$("#msg").text("Recharge will expire in 56 days on " + expire(currentDate, 56));
+				    }
+			    }
+			    else 
+			    {
+				    $("#msg").text("");
+			    }
+			}
+			function expire(start, no_of_days)
+			{
+				var date = new Date(start);                    // Parse the input date
+                date.setDate(date.getDate() + no_of_days);            // Add days
+                return date.toLocaleDateString('en-GB').replace(/\//g,"-");
+			}
+		    $("#da,#days").change(function() 
+	        {
+			    update();
+	        });
+		});
+	</script>
+</head>
+<body>
+	Recharge date : <input type="date" id="da"><br><br>
+	Recharge days : <select id="days">
+		               <option value="">Select days</option>
+		               <option value="14">14</option>
+		               <option value="22">22</option>
+		               <option value="28">28</option>
+		               <option value="56">56</option>
+	                </select>
+	<p id="msg"></p>
+</body>
+</html>

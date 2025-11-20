@@ -1,0 +1,255 @@
+*
+{
+	margin: 0px;
+	padding: 0px;
+/*	background-color: grey;*/
+	background-color: #4d5656;
+}
+.bulb-on
+{
+    display: none;
+}
+.bulb-image
+{ 
+   height: 15px;
+   width: 15px;
+   transform: rotate(-180deg);
+}
+.bulb-on_1
+{
+   display: none;
+}
+.bulb-image_1
+{
+    height: 15px;
+    width: 15px;
+    transform: rotate(-270deg);
+}
+.bulb-on_2
+{
+    display: none;
+}
+.bulb-image_2
+{
+    height: 15px;
+    width: 15px;
+    transform: rotate(-180deg);
+}
+.bulb-on_3
+{
+    display: none;
+}
+.bulb-image_3
+{
+    height: 15px;
+    width: 15px;
+    transform: rotate(-90deg);
+    margin-left: 1500px;
+}
+span
+{
+	color: red;
+	font-weight: bolder;
+}
+#image
+{
+	height: 330px;
+	width: 310px;
+	border-radius: 30px;
+	position: absolute;
+	left: 100px;
+	top: 150px;
+}
+#msg
+{
+	height: 40px;
+	width: 290px;
+	position: absolute;
+	left: 110px;
+	top: 500px;
+	line-height: 36px;
+	background-color: white;
+	font-weight: bold;
+	font-size: 35px;
+	color : black;
+	border-radius: 0px 20px 0px 20px;
+}
+#show
+{
+	height: 40px;
+	width: 290px;
+	background-color: white;
+	position: absolute;
+	left: 110px;
+	top: 90px;
+	font-weight: bold;
+	font-size: 35px;
+	border-radius: 20px 0px 20px 0px;
+}
+#user_detail
+{
+	text-align: center;
+	height: 40px;
+	width: 230px;
+	position: absolute;
+	left:850px;
+	top: 20px;
+	background-color: white;
+	border-radius: 10px;
+}
+.user_fields
+{
+	height: 500px;
+	width: 900px;
+	border: 5px solid yellowgreen;
+	position: absolute;
+	left: 550px;
+	top: 100px;
+	font-size: 20px;
+}
+.field
+{
+	height: 20px;
+	position: absolute;
+	left: 140px;
+	background-color: white;
+}
+#show_pass
+{
+	position: absolute;
+	left: 320px;
+	top: 137px;
+}
+#eyeicon
+{
+	position: absolute;
+	left: 315px;
+	top: 131px;
+	height: 30px;
+	width: 30px;
+}
+.gender
+{
+	position: absolute;
+	left: 400px;
+	top: 390px;
+}
+#photo
+{
+	position: absolute;
+	top: 320px;
+	left: 70px;
+}
+#uploaded_image
+{
+	height: 300px;
+    width: 300px;
+    position: absolute;
+    left: 400px;
+    top: 10px;
+    border: 2px solid black;
+}
+#img_preview
+{
+	height: 300px;
+	width: 300px;
+	object-fit: cover;
+}
+.form_timer
+{
+	position: absolute;
+	left: 1300px;
+	top: 110px;
+	font-weight: bold;
+	font-size: 35px;
+	color: yellow;
+}
+#password_conditions
+{
+	position: absolute;
+	left: 740px;
+	top: 510px;
+	color: #4d5656;
+}
+#nerror
+{
+	position: absolute;
+	left: 170px;
+	top: 25px;
+	font-size: 18px;
+}
+#aerror
+{
+	position: absolute;
+	left: 170px;
+	top: 69px;
+	font-size: 18px;
+}
+#perror
+{
+	position: absolute;
+	left: 170px;
+	top: 158px;
+	font-size: 18px;
+}
+#eerror
+{
+	position: absolute;
+	left: 170px;
+	top: 115px;
+	font-size: 18px;
+}
+#merror
+{
+	position: absolute;
+	left: 170px;
+	top: 203px;
+	font-size: 18px;
+}
+#derror
+{
+	position: absolute;
+	left: 170px;
+	top: 248px;
+}
+#terror
+{
+	position: absolute;
+	left: 170px;
+	top: 292px;
+}
+#caperror
+{
+	position: absolute;
+	left: 170px;
+	top: 385px;
+}
+#refresh
+{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	left: 280px;
+	top: 353px;
+}
+#captcha_text
+{
+	height: 30px;
+	width: 100px;
+	position: absolute;
+	left: 170px;
+	top: 350px;
+	text-align: center;
+	line-height: 30px;
+	background-color: yellow;
+}
+#submit_button
+{
+	height: 40px;
+	width: 90px;
+	position: absolute;
+	left: 620px;
+	top: 560px;
+	text-align: center;
+	background-color: lightgrey;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Character Frequency</title>
+</head>
+<body>
+	<script>
+		var s = "aaabbcbbddd";
+		var count = {};
+		var str = " ";
+		for(var i=0;i<s.length;i++)
+		{
+		    var char = s[i];
+		    count[char] = (count[char] || 0) + 1;
+		}
+		console.log(count);
+		for(var x in count)
+		{
+			str = str + (x + count[x])
+		    console.log(x + count[x]);
+		}
+		console.log(str);
+	</script>
+</body>
+</html>

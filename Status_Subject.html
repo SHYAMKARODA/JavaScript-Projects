@@ -1,0 +1,157 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function()
+		{
+			$("select").click(function()
+			{
+				var SV = $("select").val();
+				if(SV=="10")
+				{
+					$(".status").show();
+					$(".sub").hide();
+				}
+				else if(SV=="11")
+				{
+					$(".status").hide();
+					$(".sub").show();
+				}
+				else if(SV=="12")
+				{
+					$(".status").keyup(function()
+					{
+						if(SV=="10")
+				        {
+					        $(".status").show();
+					        $(".sub").hide();
+				        }
+				        else if(SV=="11")
+				        {
+					        $(".status").hide();
+					        $(".sub").show();
+				        }
+					});
+					$(".status").show();
+					$(".sub").show();
+				}
+				else
+				{
+					$(".status").hide();
+					$(".sub").hide();
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	Select Class : <select>
+		                <option value="">Select class</option>
+		                <option value="1">1</option>
+		                <option value="2">2</option>
+		                <option value="3">3</option>
+		                <option value="4">4</option>
+		                <option value="5">5</option>
+		                <option value="6">6</option>
+		                <option value="7">7</option>
+		                <option value="8">8</option>
+		                <option value="9">9</option>
+		                <option value="10">10</option>
+		                <option value="11">11</option>
+		                <option value="12">12</option>
+	                </select><br>
+	<div class="status" style="display: none;">
+		<b>Status : <input type="radio" name="x">Regular
+			        <input type="radio" name="x">Private</b>
+	</div><br>
+	<div class="sub" style="display: none;">
+		<b>Subject : <input type="radio" name="x">Maths
+			         <input type="radio" name="x">Bio
+			         <input type="radio" name="x">Comm</b>
+	</div>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		.info
+		{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	Select Class : <select onchange="dikhao()" id="kd">
+		<option value="Select Class">Select Class</option>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+	</select><br><br>
+
+	<span class="info" id="status">
+		<b>Status : </b> <input type="radio" name="x">Regular
+						 <input type="radio" name="x">Private
+	</span>
+	<span class="info" id="subject">
+		<b>Subject : </b> <input type="radio" name="x">Maths
+						 <input type="radio" name="x">Bio
+						 <input type="radio" name="x">Comm
+	</span>
+
+	<script>
+		function dikhao()
+		{
+			var kaksha = document.getElementById("kd").value;
+
+			if(kaksha==10)
+			{
+				document.getElementById("status").style.display = "block";
+				document.getElementById("subject").style.display = "none";
+			}
+			else if(kaksha==11)
+			{
+				document.getElementById("subject").style.display = "block";
+				document.getElementById("status").style.display = "none";
+			}
+			else if(kaksha==12)
+			{
+				document.getElementById("subject").style.display = "block";
+				document.getElementById("status").style.display = "block";
+			}
+			else
+			{
+				document.getElementById("status").style.display = "none";
+				document.getElementById("subject").style.display = "none";
+			}
+		}
+	</script>
+</body>
+</html>

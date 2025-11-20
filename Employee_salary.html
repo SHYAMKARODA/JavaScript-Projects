@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		body
+		{
+			font-size: 20px;
+		}
+		input,select
+		{
+			height: 18px;
+		}
+		#serror
+		{
+			position: absolute;
+			top: 150px;
+			left : 950px;
+			color: red;
+		}
+		#lerror
+		{
+			position: absolute;
+			top: 10px;
+			left: 920px;
+			color: red;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function()
+		{
+			$("#tdim").keyup(function()
+			{
+				var TDIM = $("#tdim").val();
+				if(TDIM>31)
+				{
+					$("#tdim").val("");
+					$("#epd").val("");
+					$("#ead").val("");
+					$("#epds").val("");
+					$("#ecd").val("");
+					$("#eapd").val("");
+					$("#eaad").val("");
+					$("#es").val("");
+				}
+			});
+			$("#epd").keyup(function()
+			{
+				var TDIM = $("#tdim").val();
+				var EPD = $("#epd").val();
+				var EAD = TDIM - EPD;
+				$("#ead").val(EAD);
+				var EPDS = $("#epds").val();
+				if(EPD>TDIM)
+				{
+					$("#tdim").val("");
+					$("#epd").val("");
+					$("#ead").val("");
+					$("#epds").val("");
+					$("#ecd").val("");
+					$("#eapd").val("");
+					$("#eaad").val("");
+					$("#es").val("");
+				}
+			});
+			$("#ya").click(function()
+			{
+				$("#CL").show();
+				$("#ecd").keyup(function()
+			    {
+				    var ECD=parseInt($("#ecd").val())
+				    var EAD=parseInt($("#ead").val())
+				    if (EAD>=ECD) 
+				    {
+					    $("#ecd").val()
+					    var EPDS = $("#epds").val();
+					    var EPD = $("#epd").val();
+					    var EAAD = EAD - ECD;
+					    var EAPD = parseInt(ECD) + parseInt(EPD);
+				        var ES = EAPD * EPDS;
+				        $("#eapd").val(EAPD);
+				        $("#eaad").val(EAAD);
+				        $("#es").val(ES);
+				    }
+				    else
+				    {
+				     	$("#ecd").val("");
+				     	$("#eapd").val("");
+				     	$("#eaad").val("");
+				     	$("#es").val("");
+				    }
+			});
+			});
+			$("#ya").click(function()
+			{
+				$("#ecd").val("");
+                $("#eapd").val("");
+				$("#eaad").val("");
+				$("#es").val("");
+			});
+			$("#na").click(function()
+			{
+				$("#CL").hide();
+				var EPD = $("#epd").val();
+				var EPDS = $("#epds").val();
+				var ES = EPD * EPDS;
+				$("#es").val(ES);
+				$("#ya").click(function()
+				{
+					$("#es").val("");
+				});
+			});
+			$("#saal").keyup(function()
+			{
+				var year = $("#saal").val().replace();
+				if(year.length==4)
+				{
+					$("#mahine").prop('disabled', false);
+					if(year%4==0 || year%400==0)
+					{
+						$("#lerror").text("Leap year");
+					}
+					else
+					{
+						$("#lerror").text("Not a leap year");
+					}
+				}
+				else if(year.startsWith(0))
+				{
+					$("#saal").val("");
+					$("#mahine").val("Select month");
+					$("#mahine").prop('disabled', true);
+					$("#tdim").val("");
+					$("#epds").val("");
+					$("#epd").val("");
+					$("#ead").val("");
+					$("#es").val("");
+					$("#lerror").text("");
+				}
+				else
+				{
+					$("#mahine").prop('disabled', true);
+					$("#mahine").val("Select month");
+					$("#tdim").val("");
+					$("#epds").val("");
+					$("#epd").val("");
+					$("#ead").val("");
+					$("#lerror").text("");
+				}
+			});
+
+			$("#mahine").change(function()
+			{
+				var year = $("#saal").val();
+				var oper = $("#mahine").val();
+				if(oper=="jan" || oper=="mar" || oper=="may" || oper=="jul" || oper=="aug" || oper=="oct" || oper=="dec") 
+				{
+					$("#tdim").val("31");
+				}
+				else if(oper=="apr" || oper=="jun" || oper=="sep" || oper=="nov")
+				{
+					$("#tdim").val("30");
+				}
+				else if(oper=="feb")
+				{
+					if(year%4==0 || year%400==0)
+					{
+						$("#tdim").val("29");
+					}
+					else
+					{
+						$("#tdim").val("28");
+					}
+				}
+				else
+				{
+					$("#mahine").prop('disabled', true);
+					$("#mahine").val("Select month");
+					$("#tdim").val("");
+					$("#epds").val("");
+					$("#epd").val("");
+					$("#ead").val("");
+					$("#lerror").text("");
+				}
+			});
+			$("#epds").keyup(function()
+			{
+				var epds = $("#epds").val();
+				var l = epds.length;
+				if(epds=="")
+				{
+					$("#serror").text("");
+				}
+				else if(epds.startsWith(0))
+				{
+					$("#epds").val("");
+				}
+				else if(l>=1 && l<3)
+				{
+					$("#serror").text("Enter atleast 3 digits");
+				}
+				else if(l>=3)
+				{
+					$("#serror").text("");
+				}
+			});
+
+			$("#saal,#epds,#epd").on('input', function()
+        	{
+        		this.value = this.value.replace(/[^0-9]/,'');
+        	});
+		});
+	</script>
+</head>
+<body>
+	<center>
+		Enter a year : <input type="text" id="saal" maxlength="4"><br><br>
+		Select month : <select id="mahine" disabled>
+			               <option>Select month</option>
+			               <option value="jan">January</option>
+			               <option value="feb">February</option>
+			               <option value="mar">March</option>
+			               <option value="apr">April</option>
+			               <option value="may">May</option>
+			               <option value="jun">June</option>
+			               <option value="jul">July</option>
+			               <option value="aug">August</option>
+			               <option value="sep">September</option>
+			               <option value="oct">October</option>
+			               <option value="nov">November</option>
+			               <option value="dec">December</option>
+					   </select><br><br>
+					   <span id="lerror"></span>
+		Total days in month : <input type="text" id="tdim" readonly><br><br>
+	    Emp Per Day Salary : <input type="text" id="epds"><br><br>
+	                         <span id="serror"></span>
+	    Emp Present Days : <input type="text" id="epd" maxlength="2"><br><br>
+	    Emp Absent Days : <input type="text" id="ead" readonly><br><br>
+	    Allowed CL  : <input type="radio" name="x" value="yes" id="ya" disabled>Yes
+	                  <input type="radio" name="x" value="no" id="na" disabled>No<br><br>
+	    <div id="CL" style="display: none;">
+	    	Enter CL Days : <input type="text" id="ecd"><br><br>
+	        Emp Actual Present Days : <input type="text" id="eapd" readonly><br><br>
+	        Emp Actual Absent Days : <input type="text" id="eaad" readonly><br><br>
+	    </div>
+	    Emp Salary : <input type="text" id="es"><br><br>
+	</center>
+</body>
+</html>
